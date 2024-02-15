@@ -11,7 +11,7 @@ import SwiftUI
 struct BS23_iOSTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MovieListView()
         }
     }
 }
