@@ -49,8 +49,8 @@ class MovieListViewModel: ObservableObject {
     
     private func getEndpoint(using query: String) -> EndPoint? {
         let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let apiKey = Constant.API.apiKey
-        let apiEndPoint = Constant.API.apiEndPoint
+        let apiKey = Constant.API.MovieList.apiKey
+        let apiEndPoint = Constant.API.MovieList.apiEndPoint
         
         let searchURLString = apiEndPoint + apiKey + "&query=" + encodedQuery
         
@@ -60,6 +60,17 @@ class MovieListViewModel: ObservableObject {
         
         let endPoint = EndPoint(url: url, httpMethod: .get, httpBody: nil)
         return endPoint
+    }
+    
+    func getPosterURL(data: Movie) -> URL? {
+        if let posterPath = data.posterPath {
+            let posterURLString = Constant.API.MovieList.posterBaseURL + posterPath
+            
+            if let url = URL(string: posterURLString) {
+                return url
+            }
+        }
+        return nil 
     }
     
 }
