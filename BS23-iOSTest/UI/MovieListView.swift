@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct MovieListView: View {
     
@@ -15,7 +16,7 @@ struct MovieListView: View {
         NavigationView {
             List(viewModel.movies) { movie in
                 HStack {
-                    AsyncImage(url: viewModel.getPosterURL(data: movie)) { image in
+                    CachedAsyncImage(url: viewModel.getPosterURL(data: movie)) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
